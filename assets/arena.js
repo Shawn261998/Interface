@@ -7,7 +7,7 @@ document.head.appendChild(markdownIt)
 
 
 // Okay, Are.na stuff!
-let channelSlug = 'physical-touchpoints' // The “slug” is just the end of the URL
+let channelSlug = 'typography-and-interaction-too' // The “slug” is just the end of the URL
 
 
 
