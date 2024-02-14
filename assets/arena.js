@@ -5,9 +5,9 @@ markdownIt.src = 'https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-
 document.head.appendChild(markdownIt)
 
 
-
+console.log (channelSlug)
 // Okay, Are.na stuff!
-let channelSlug = 'typography-and-interaction-too' // The “slug” is just the end of the URL
+let channelSlug = 'physical-touchpoints' // The “slug” is just the end of the URL
 
 
 
