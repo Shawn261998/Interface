@@ -9,19 +9,21 @@ document.head.appendChild(markdownIt)
 // Okay, Are.na stuff!
 let channelSlug = 'physical-touchpoints' // The “slug” is just the end of the URL
 
+
+
 // First, let’s lay out some *functions*, starting with our basic metadata:
 let placeChannelInfo = (data) => {
 	// Target some elements in your HTML:
 	let channelTitle = document.getElementById('channel-title')
 	let channelDescription = document.getElementById('channel-description')
-	// let channelCount = document.getElementById('channel-count')
-	// let channelLink = document.getElementById('channel-link')
+	let channelCount = document.getElementById('channel-count')
+	let channelLink = document.getElementById('channel-link')
 
 	// Then set their content/attributes to our data:
 	channelTitle.innerHTML = data.title
 	channelDescription.innerHTML = window.markdownit().render(data.metadata.description) // Converts Markdown → HTML
-	// channelCount.innerHTML = data.length
-	// channelLink.href = `https://www.are.na/channel/${channelSlug}`
+	channelCount.innerHTML = data.length
+	channelLink.href = `https://www.are.na/channel/${channelSlug}`
 }
 
 
@@ -35,7 +37,7 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li class="block block--link">
+			<li>
 				<p><em>Link</em></p>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
@@ -50,78 +52,78 @@ let renderBlock = (block) => {
 		channelBlocks.insertAdjacentHTML('beforeend', linkItem)
 	}
 
-	// // Images!
-	// else if (block.class == 'Image') {
-	// 	// …up to you!
-	// }
+	// Images!
+	else if (block.class == 'Image') {
+		// …up to you!
+	}
 
-	// // Text!
-	// else if (block.class == 'Text') {
-	// 	// …up to you!
-	// }
+	// Text!
+	else if (block.class == 'Text') {
+		// …up to you!
+	}
 
-	// // Uploaded (not linked) media…
-	// else if (block.class == 'Attachment') {
-	// 	let attachment = block.attachment.content_type // Save us some repetition
+	// Uploaded (not linked) media…
+	else if (block.class == 'Attachment') {
+		let attachment = block.attachment.content_type // Save us some repetition
 
-	// 	// Uploaded videos!
-	// 	if (attachment.includes('video')) {
-	// 		// …still up to you, but we’ll give you the `video` element:
-	// 		let videoItem =
-	// 			`
-	// 			<li>
-	// 				<p><em>Video</em></p>
-	// 				<video controls src="${ block.attachment.url }"></video>
-	// 			</li>
-	// 			`
-	// 		channelBlocks.insertAdjacentHTML('beforeend', videoItem)
-	// 		// More on video, like the `autoplay` attribute:
-	// 		// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
-	// 	}
+		// Uploaded videos!
+		if (attachment.includes('video')) {
+			// …still up to you, but we’ll give you the `video` element:
+			let videoItem =
+				`
+				<li>
+					<p><em>Video</em></p>
+					<video controls src="${ block.attachment.url }"></video>
+				</li>
+				`
+			channelBlocks.insertAdjacentHTML('beforeend', videoItem)
+			// More on video, like the `autoplay` attribute:
+			// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+		}
 
-	// 	// Uploaded PDFs!
-	// 	else if (attachment.includes('pdf')) {
-	// 		// …up to you!
-	// 	}
+		// Uploaded PDFs!
+		else if (attachment.includes('pdf')) {
+			// …up to you!
+		}
 
-	// 	// Uploaded audio!
-	// 	else if (attachment.includes('audio')) {
-	// 		// …still up to you, but here’s an `audio` element:
-	// 		let audioItem =
-	// 			`
-	// 			<li>
-	// 				<p><em>Audio</em></p>
-	// 				<audio controls src="${ block.attachment.url }"></video>
-	// 			</li>
-	// 			`
-	// 		channelBlocks.insertAdjacentHTML('beforeend', audioItem)
-	// 		// More on audio: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-	// 	}
-	// }
+		// Uploaded audio!
+		else if (attachment.includes('audio')) {
+			// …still up to you, but here’s an `audio` element:
+			let audioItem =
+				`
+				<li>
+					<p><em>Audio</em></p>
+					<audio controls src="${ block.attachment.url }"></video>
+				</li>
+				`
+			channelBlocks.insertAdjacentHTML('beforeend', audioItem)
+			// More on audio: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+		}
+	}
 
-	// // Linked media…
-	// else if (block.class == 'Media') {
-	// 	let embed = block.embed.type
+	// Linked media…
+	else if (block.class == 'Media') {
+		let embed = block.embed.type
 
-	// 	// Linked video!
-	// 	if (embed.includes('video')) {
-	// 		// …still up to you, but here’s an example `iframe` element:
-	// 		let linkedVideoItem =
-	// 			`
-	// 			<li>
-	// 				<p><em>Linked Video</em></p>
-	// 				${ block.embed.html }
-	// 			</li>
-	// 			`
-	// 		channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
-	// 		// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
-	// 	}
+		// Linked video!
+		if (embed.includes('video')) {
+			// …still up to you, but here’s an example `iframe` element:
+			let linkedVideoItem =
+				`
+				<li>
+					<p><em>Linked Video</em></p>
+					${ block.embed.html }
+				</li>
+				`
+			channelBlocks.insertAdjacentHTML('beforeend', linkedVideoItem)
+			// More on iframe: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe
+		}
 
-	// 	// Linked audio!
-	// 	else if (embed.includes('rich')) {
-	// 		// …up to you!
-	// 	}
-	// }
+		// Linked audio!
+		else if (embed.includes('rich')) {
+			// …up to you!
+		}
+	}
 }
 
 
@@ -148,7 +150,6 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		console.log(data) // Always good to check your response!
 		placeChannelInfo(data) // Pass the data to the first function
 
-
 		// Loop through the `contents` array (list), backwards. Are.na returns them in reverse!
 		data.contents.reverse().forEach((block) => {
 			// console.log(block) // The data for a single block
@@ -160,4 +161,3 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
 	})
-

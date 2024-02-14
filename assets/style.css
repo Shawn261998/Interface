@@ -46,19 +46,13 @@ h1{
 	padding-top: var(--spacing);
 }
 
-.about{ 
-    border-left: 2px solid var(--grey);
-	padding-bottom: calc(2* var(--spacing));
-	padding-top: var(--spacing);
-	line-height: 19px;
-}
-
 .author{ 
 	font-size: var(--typography-base);
 	border: 2px solid var(--black);
 	border-radius: 20px;
 	padding: var(--spacing);
-	margin-bottom: calc(2* var(--spacing))
+	margin-bottom: calc(2* var(--spacing));
+	margin-top: calc(2* var(--spacing))
 }
 
 .banner-img { 
@@ -107,4 +101,8 @@ footer{
 	display: block;
 	padding: calc(3* var(--spacing));
 	color: var(--white);
+}
+
+.blocks--link { 
+	padding-right: calc(3* var(--spacing));
 }
