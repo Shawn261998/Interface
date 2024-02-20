@@ -15,6 +15,32 @@
 	--dark-green:#3E462C;
 }
 
+@media only screen and (min-width: 1024px) {
+
+	header{ 
+		background-image: url(/assets/images/Group\ 18.png);
+		background-size: cover;
+		color: var(--white);
+		padding: calc (3  *var(--spacing));
+		margin: calc (3  *var(--spacing));
+	}
+
+	.logo-img{ 
+		height: 50%;
+		width: 50%;
+	}
+
+	.channel-title{ 
+		font-weight: bold;
+		font-size:  calc(6* var(--typography-base));
+		line-height: 100%;
+		padding-bottom: var(--spacing);
+		padding-top: var(--spacing);
+	}
+
+}
+
+
 header {
     padding: calc(3* var(--spacing));
 	padding-bottom: calc(-3* var(--spacing));
@@ -46,6 +72,8 @@ h1{
 	padding-top: var(--spacing);
 }
 
+
+
 .author{ 
 	font-size: var(--typography-base);
 	border: 2px solid var(--black);
@@ -67,7 +95,7 @@ blockquote {
 	padding: 20px;
 }
 
-.grid-wrapper { 
+.container { 
 	display: grid;
 	grid-template-columns: 1fr;
 	background-color: var(--dark-grey);
