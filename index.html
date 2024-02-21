@@ -25,15 +25,35 @@
                     <button class="author_button"> JC Clark </button>
                  </div>
 
-                 <!-- <div class="right_banner">
-                    <img src="/assets/images/folder1.png">
-                    <img src="/assets/images/folder1.png">
-                    <img src="/assets/images/folder1.png">
-                 </div> -->
+                 <div class="right_banner">
+                    <div class="container_image">
+                        <div class="indicator"></div>
+                        <div class="gallery">
+                          <div class="gallery-item">
+                            <img src="/assets/images/image1.jpg" alt="" />
+                          </div>
+                          <div class="gallery-item">
+                            <img src="/assets/images/image2.gif" alt="" />
+                          </div>
+                          <div class="gallery-item">
+                            <img src="/assets/images/image3.jpg" alt="" />
+                          </div>
+                          <div class="gallery-item">
+                            <img src="/assets/images/image4.jpg" alt="" />
+                          </div>
+                          <div class="gallery-item">
+                            <img src="/assets/images/image5.jpg" alt="" />
+                          </div>
+                          <div class="gallery-item">
+                            <img src="/assets/images/image6.jpg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                 </div>
         </header>
 
 
-        <section class="container">
+        <section class="container-folder-1">
 
             <aside class="left-container"> 
             <img class="folder_1" src="/assets/images/folder1.png">
@@ -46,13 +66,55 @@
 
         </section>
 
+
         <!-- blocks -->
-        <!-- <section class="container-blocks"> -->
+        <section class="container">
             <ul class="blocks" id="channel-blocks">
             </ul> 
-            <ul class="imageBlocks" id="block--image"> </ul>
-        <!-- </section> -->
+        </section>
+        <section class="container-users">
+            <ul class="blocks" id="channel-users">
+            </ul> 
+        </section>
     </body> 
+      <script> 
+
+const galleryContainer = document.querySelector(".gallery");
+const galleryItems = galleryContainer.querySelectorAll(".gallery-item");
+const indicator = document.querySelector(".indicator");
+
+const defaultItemFlex = "0 1 20px";
+const hoverItemFlex = "1 1 400px";
+
+let hoveredItemIndex = 0;
+
+const updategalleryItems = () => {
+  galleryItems.forEach((item, index) => {
+    let flex = defaultItemFlex;
+
+    if (index === hoveredItemIndex) {
+      flex = hoverItemFlex;
+    }
+
+    item.style.flex = flex;
+  });
+};
+
+galleryItems.forEach((item, index) => {
+  item.addEventListener("mouseenter", () => {
+    hoveredItemIndex = index;
+    updategalleryItems();
+  });
+})
+
+galleryContainer.addEventListener("mousemove", (e) => {
+  indicator.style.left = `${
+    e.clientX - galleryContainer.getBoundingClientRect().left
+  }px`;
+});
+
+      
+    </script>
     <footer> 
         <p> Typography & Interaction</p>
         <p> Shaurya Mehta</p>
