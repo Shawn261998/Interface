@@ -37,7 +37,7 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li>
+			<li class="block block--link">
 				<p><em>Link</em></p>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
@@ -54,12 +54,30 @@ let renderBlock = (block) => {
 
 	// Images!
 	else if (block.class == 'Image') {
-		// …up to you!
-	}
+
+		let imageItem = 
+		`
+			<li class="block block--image">
+				<figure> 
+				<img src="${block.image.large.url} alt="${block.title} by ${block.author}> 
+				<figcaption> ${ block.title}</figcaption> 
+				</figure> 
+			</li>
+
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', imageItem)
+}
 
 	// Text!
 	else if (block.class == 'Text') {
-		// …up to you!
+
+		let textItem = 
+		`
+			<li class= "block -- block-text">
+				${block.content.html}
+			</li> 
+		`
+		channelBlocks.insertAdjacentHTML('beforeend', textItem)
 	}
 
 	// Uploaded (not linked) media…
